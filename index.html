@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="style.css">
+        <title>Login</title>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <link rel="icon" type="image/png" href="favicon.png">
+    </head>
+    <body>
+        <div class="main-login">
+            <div class="left-login">
+                <h1>Bem-vindo estudante,<br>crie uma sala ou entre para jogar</h1>
+                <img src="img/bingo.svg" class="left-login-image" alt="Bingo">
+            </div>
+            <!--<form method="POST" action="model/verificaexistencia.php">-->
+            <div class="right-login">
+                <div class="card-login">
+                    <h1>ENTRAR</h1>
+                    <div class="textfield">
+                        <label for="usuario">Usuário</label>
+                        <input type="text" name="usuario" id="usuario"
+                            placeholder="Usuário">
+                    </div>
+                    <div class="textfield">
+                        <label for="senha">Código da sala</label>
+                        <input type="text" name="codigo" id="codigo"
+                            placeholder="Código">
+                    </div>
+                    <button class="btn-login" onclick="validaSala()">Entrar</button>
+                <!--</form>-->
+                    <h1>Não tem sala?</h1>
+                    <button class="btn-create" onclick="window.location.href='view/create.html'">Criar sala</button>
+                </div>
+            </div>
+        </div>
+        
+        <script>
+        function redirecionarUsuario() {
+                var campo_html = document.getElementById("codigo").value;
+                var campo_usuario = document.getElementById("usuario").value;
+                window.location.href = "model/cadastrousuario.php?codigo=" + encodeURIComponent(campo_html) + "&" + "usuario="+encodeURIComponent(campo_usuario);
+        }
+
+        function validaSala() {
+                var user = document.getElementById("usuario").value;
+                var codigo = document.getElementById("codigo").value;
+                window.location.href = "model/verificaexistencia.php?codigo=" + encodeURIComponent(codigo) + "&" + "usuario=" + encodeURIComponent(user);
+
+        }
+        </script>
+    </body>
+</html>
